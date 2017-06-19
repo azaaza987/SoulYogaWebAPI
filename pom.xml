@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.aig.postsaleadmin</groupId>
-  <artifactId>postSaleAdministrator</artifactId>
+  <groupId>SoulYogaAdmin</groupId>
+  <artifactId>SoulYogaAdmin</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>postSaleAdministrator Maven Webapp</name>
+  <name>SoulYogaAdmin Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
 	<!-- 指定Maven仓库 -->
