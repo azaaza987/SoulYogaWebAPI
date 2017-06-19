@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.web.soulyogaadmin.entity.CourseEntry" table="course" schema="dbo" >
+    <class name="com.web.soulyogaadmin.entity.CourseEntry" table="course" >
         <id name="iD" type="int">
             <column name="ID" />
              <generator class="identity" />
@@ -24,10 +24,10 @@
         <property name="point" type="int">
             <column name="Point" length="20" />
         </property>
-        <property name="createdTime" type="string">
+        <property name="createdTime" type="date">
             <column name="CreatedTime" length="10" />
         </property>
-        <property name="modifiedTime" type="string">
+        <property name="modifiedTime" type="date">
             <column name="ModifiedTime" length="10" />
         </property>
         <property name="state" type="int">

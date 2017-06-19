@@ -19,9 +19,9 @@ public class CourseEntry implements java.io.Serializable {
 	
 	private int point;
 	
-	private String createdTime;
+	private Date createdTime;
 	
-	private String modifiedTime;
+	private Date modifiedTime;
 	
 	private int state;
 	
@@ -31,7 +31,7 @@ public class CourseEntry implements java.io.Serializable {
 
 
 	public CourseEntry(int iD, String name, int courseCategoryID, int yogaClubID, String introduction, int point,
-			String createdTime, String modifiedTime, int state) {
+			Date createdTime, Date modifiedTime, int state) {
 		this.iD = iD;
 		this.name = name;
 		this.courseCategoryID = courseCategoryID;
@@ -102,22 +102,24 @@ public class CourseEntry implements java.io.Serializable {
 		this.point = point;
 	}
 
-	public String getCreatedTime() {
+
+
+	public Date getCreatedTime() {
 		return createdTime;
 	}
 
 
-	public void setCreatedTime(String createdTime) {
+	public void setCreatedTime(Date createdTime) {
 		this.createdTime = createdTime;
 	}
 
 
-	public String getModifiedTime() {
+	public Date getModifiedTime() {
 		return modifiedTime;
 	}
 
 
-	public void setModifiedTime(String modifiedTime) {
+	public void setModifiedTime(Date modifiedTime) {
 		this.modifiedTime = modifiedTime;
 	}
 

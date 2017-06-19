@@ -1,6 +1,5 @@
 package com.aig.postsaleadmin;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
@@ -11,6 +10,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.web.soulyogaadmin.employee.service.IEmployeeAccountService;
+import com.web.soulyogaadmin.employee.service.impl.EmployeeAccountServiceImpl;
 import com.web.soulyogaadmin.user.service.IUserService;
 import com.web.soulyogaadmin.user.service.UserServiceImpl;
 
@@ -24,7 +25,9 @@ import com.web.soulyogaadmin.user.service.UserServiceImpl;
 
 public class TestUserService {
 
-	IUserService userService = new UserServiceImpl();
+//	IUserService userService = new UserServiceImpl();
+	
+	IEmployeeAccountService employeeAccService = new EmployeeAccountServiceImpl();
 	
 	
 	@BeforeClass
@@ -38,7 +41,7 @@ public class TestUserService {
 	@Before
 	public void setUp() throws Exception {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(new String[] { "classpath:spring.xml", "classpath:spring-hibernate.xml" });
-		userService = (IUserService) ac.getBean("userService");
+		employeeAccService = (IEmployeeAccountService) ac.getBean("employeeAccountService");
 	} 
 
 	@After
@@ -47,7 +50,7 @@ public class TestUserService {
 
 	@Test
 	public void testUserLogin() {
-		assertTrue(userService.userLogin("Admin", "Admin"));	
+		assertTrue(employeeAccService.employeeAccountLogin("Admin", "Admin"));	
 	}
 
 	@Test
@@ -60,7 +63,7 @@ public class TestUserService {
 	@Test
 	public void testUserResetPassword() {
 //		assertTrue(userService.userResetPassword("adminTest2", "newpassword"));
-		assertTrue(userService.userLogin("Admin", "Admin"));	
+//		assertTrue(employeeAccService.employeeAccountLogin("Admin", "Admin"));	
 	}
 
 }
