@@ -39,7 +39,7 @@ public class TestUserService {
 	public void setUp() throws Exception {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(new String[] { "classpath:spring.xml", "classpath:spring-hibernate.xml" });
 		userService = (IUserService) ac.getBean("userService");
-	}
+	} 
 
 	@After
 	public void tearDown() throws Exception {
