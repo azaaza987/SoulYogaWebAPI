@@ -7,28 +7,31 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.web.soulyogaadmin.employee.service.IEmployeeAccountService;
-import com.web.soulyogaadmin.employee.service.impl.EmployeeAccountServiceImpl;
-import com.web.soulyogaadmin.user.service.IUserService;
-import com.web.soulyogaadmin.user.service.UserServiceImpl;
 
 
 
 /**
  * Test User Service
  * @author Shawn xiao
- * @version 2017-06-15
+ * @version 2017-06-15 
  */
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"classpath:spring.xml"})
 public class TestUserService {
 
 //	IUserService userService = new UserServiceImpl();
 	
-	IEmployeeAccountService employeeAccService = new EmployeeAccountServiceImpl();
+//	IEmployeeAccountService employeeAccService = new EmployeeAccountServiceImpl();
 	
+	@Autowired
+	IEmployeeAccountService employeeAccountService;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -40,8 +43,8 @@ public class TestUserService {
 
 	@Before
 	public void setUp() throws Exception {
-		ApplicationContext ac = new ClassPathXmlApplicationContext(new String[] { "classpath:spring.xml", "classpath:spring-hibernate.xml" });
-		employeeAccService = (IEmployeeAccountService) ac.getBean("employeeAccountService");
+//		ApplicationContext ac = new ClassPathXmlApplicationContext(new String[] { "classpath:spring.xml", "classpath:spring-hibernate.xml" });
+//		employeeAccountService = (IEmployeeAccountService) ac.getBean("employeeAccountService");
 	} 
 
 	@After
@@ -50,7 +53,7 @@ public class TestUserService {
 
 	@Test
 	public void testUserLogin() {
-		assertTrue(employeeAccService.employeeAccountLogin("Admin", "Admin"));	
+		assertTrue(employeeAccountService.employeeAccountLogin("Admin", "Admin"));	
 	}
 
 	@Test
