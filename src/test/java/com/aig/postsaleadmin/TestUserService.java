@@ -26,7 +26,7 @@ import com.web.soulyogaadmin.employee.service.IEmployeeAccountService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:spring.xml","classpath:spring-hibernate.xml"})
-public class TestUserService {
+public class TestUserService { 
 
 //	IUserService userService = new UserServiceImpl();
 	
