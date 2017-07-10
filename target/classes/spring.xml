@@ -13,11 +13,12 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<!-- 自动扫描dao和service包(自动注入) -->
 	<context:component-scan base-package="
 									      com.web.soulyogaadmin.course.dao, com.web.soulyogaadmin.course.service,
-									      com.web.soulyogaadmin.user.dao, com.web.soulyogaadmin.user.service"	/>
+									      com.web.soulyogaadmin.user.dao, com.web.soulyogaadmin.user.service,
+									      com.web.soulyogaadmin.employee.dao, com.web.soulyogaadmin.employee.service"	/>
 		
 		<bean id="propertyConfigurer" 
            class="com.web.soulyogaadmin.util.EncryptablePropertyPlaceholderConfigurer"> 
-           <property name="locations"> 
+           <property name="locations">  
                 <list> 
                      <value>classpath:config.properties</value> 
                 </list> 

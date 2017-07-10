@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.web.soulyogaadmin.entity.CourseEntry" table="course" >
+    <class name="com.web.soulyogaadmin.entity.CourseEntry" table="course" dynamic-insert="true">
         <id name="iD" type="int">
             <column name="ID" />
              <generator class="identity" />

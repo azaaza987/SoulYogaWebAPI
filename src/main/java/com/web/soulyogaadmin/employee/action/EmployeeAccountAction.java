@@ -39,7 +39,7 @@ public class EmployeeAccountAction extends ActionSupport{
 	@Autowired 
 	private IEmployeeAccountService employeeAccountService;
 	
-	@Action(value="userLogin", results={@Result(name="LOGINSUCCESS", type="chain",location="getAllCourseList"), @Result(name="LOGINFAIL", location="/adminLogin.jsp")})
+	@Action(value="userLogin", results={@Result(name="LOGINSUCCESS", location="../../index.jsp"), @Result(name="LOGINFAIL", location="./adminLogin.jsp")})
 	public String userLogin() {
 		String  message = null;
 		 HttpServletRequest request = ServletActionContext.getRequest();

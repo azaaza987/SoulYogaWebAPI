@@ -1,3 +1,0 @@
-revision = ${svn_info.revision} 
-committedRevision = ${svn_info.committedRevision} 
-committedDate = ${svn_info.committedDate} 

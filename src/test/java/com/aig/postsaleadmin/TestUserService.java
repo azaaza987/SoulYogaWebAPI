@@ -1,19 +1,17 @@
 package com.aig.postsaleadmin;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.web.soulyogaadmin.course.dao.ICourseDao;
 import com.web.soulyogaadmin.employee.service.IEmployeeAccountService;
 
 
@@ -35,6 +33,9 @@ public class TestUserService {
 	@Autowired
 	IEmployeeAccountService employeeAccountService;
 	
+	@Autowired
+	ICourseDao courseDao;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -54,9 +55,14 @@ public class TestUserService {
 	}
 
 	@Test
-	public void testUserLogin() {
-		assertTrue(employeeAccountService.employeeAccountLogin("Admin", "Admin"));	
+	public void testInjection() {
+		assertNotNull(courseDao);
 	}
+	
+//	@Test
+//	public void testUserLogin() {
+//		assertTrue(employeeAccountService.employeeAccountLogin("Admin", "Admin"));	
+//	}
 
 	@Test
 	public void testUserForgetPassword() {

@@ -1,6 +1,6 @@
 package com.web.soulyogaadmin.employee.dao;
 
-import com.web.soulyogaadmin.entity.EmployeeAccountEntry;
+import com.web.soulyogaadmin.entity.EmployeeAccount;
 
 /**
  * EmployeeAccount Dao Interface
@@ -12,7 +12,7 @@ public interface IEmployeeAccountDao {
 	public boolean employeeAccountLogin(String userName, String password);
 	public String forgetPassword(String userName);
 	public boolean resetPassword(String userName,String password);
-	public boolean employeeAccountCreateOne(EmployeeAccountEntry entry);
-	public EmployeeAccountEntry getEmployeeAccount(String userName);
+	public boolean employeeAccountCreateOne(EmployeeAccount employeeAccount);
+	public EmployeeAccount getEmployeeAccount(String userName);
 	public boolean employeeAccountDeleteOne(String userName);
 }

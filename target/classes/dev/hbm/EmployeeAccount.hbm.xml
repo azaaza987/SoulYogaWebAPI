@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.web.soulyogaadmin.entity.EmployeeAccountEntry" table="employeeaccount">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        
+        <property name="employeeID" type="int">
+            <column name="employeeID" length="200" />
+        </property>
+        <property name="userName" type="string">
+            <column name="userName" length="1000" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="200" />
+        </property>
+        <property name="createdTime" type="date">
+            <column name="createdTime" />
+        </property>
+        <property name="modifiedTime" type="date">
+            <column name="modifiedTime"  />
+        </property>
+        <property name="state" type="int">
+            <column name="state" />
+        </property>
+    </class>
+</hibernate-mapping>

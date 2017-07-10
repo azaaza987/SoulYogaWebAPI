@@ -43,7 +43,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 	    <property name="acquireRetryAttempts" value="30" />         
 	    <property name="breakAfterAcquireFailure" value="true" />             
 	    <property name="testConnectionOnCheckout" value="false" />
-
+	    
 	</bean>
     <!-- 配置hibernate session工厂 -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -58,6 +58,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
                 <!-- 是否格式化打印出来的SQL -->
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
             </props>
         </property>
 

@@ -10,10 +10,9 @@ import org.hibernate.SessionFactory;
 import org.owasp.esapi.ESAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.web.soulyogaadmin.employee.dao.IEmployeeAccountDao;
-import com.web.soulyogaadmin.entity.EmployeeAccountEntry;
+import com.web.soulyogaadmin.entity.EmployeeAccount;
 import com.web.soulyogaadmin.util.Des;
 import com.web.soulyogaadmin.util.Encrypt;
 import com.web.soulyogaadmin.util.UtilValidate;
@@ -27,7 +26,6 @@ import com.web.soulyogaadmin.util.UtilValidate;
 
 
 @Repository("employeeAccountDao")
-@Transactional
 public class EmployeeAccountDaoImpl implements IEmployeeAccountDao {
 
 	String strKey = "0002000200020002";
@@ -44,7 +42,7 @@ public class EmployeeAccountDaoImpl implements IEmployeeAccountDao {
 	@Override
 	public boolean employeeAccountLogin(String userName, String password) {
 		
-		String hql = "from EmployeeAccountEntry where userName=? and password=? and state=?";  
+		String hql = "from EmployeeAccount where userName=? and password=? and state=?";  
 
 		Session session = sessionFactory.getCurrentSession();
 
@@ -56,7 +54,7 @@ public class EmployeeAccountDaoImpl implements IEmployeeAccountDao {
 			e.printStackTrace();
 		}
 		query.setInteger(2, 0);
-		EmployeeAccountEntry result = (EmployeeAccountEntry) query.uniqueResult();
+		EmployeeAccount result = (EmployeeAccount) query.uniqueResult();
 
 		if (UtilValidate.isNotEmpty(result)) {
 			return true;
@@ -65,16 +63,16 @@ public class EmployeeAccountDaoImpl implements IEmployeeAccountDao {
 		}
 	};
 
-	public EmployeeAccountEntry getEmployeeAccount(String userName) {
+	public EmployeeAccount getEmployeeAccount(String userName) {
 
-		String hql = "from EmployeeAccountEntry where adminName=? and adminStatus=?"; 
+		String hql = "from EmployeeAccount where adminName=? and adminStatus=?"; 
 
 		Session session = sessionFactory.getCurrentSession();
 
 		Query query = session.createQuery(hql);
 		query.setString(0, userName);
 		query.setInteger(1, 0);
-		EmployeeAccountEntry result = (EmployeeAccountEntry) query.uniqueResult();
+		EmployeeAccount result = (EmployeeAccount) query.uniqueResult();
 
 		if (UtilValidate.isNotEmpty(result)) {
 			return result;
@@ -90,7 +88,7 @@ public class EmployeeAccountDaoImpl implements IEmployeeAccountDao {
 
 		session = this.sessionFactory.getCurrentSession();
 
-		EmployeeAccountEntry admin = getEmployeeAccount(userName);
+		EmployeeAccount admin = getEmployeeAccount(userName);
 		if (UtilValidate.isNotEmpty(admin)) {
 
 			newPassword = getRandomString(6);
@@ -115,7 +113,7 @@ public class EmployeeAccountDaoImpl implements IEmployeeAccountDao {
 
 		session = this.sessionFactory.getCurrentSession();
 
-		EmployeeAccountEntry admin = getEmployeeAccount(userName);
+		EmployeeAccount admin = getEmployeeAccount(userName);
 		if (UtilValidate.isNotEmpty(admin)) {
 			admin.setPassword(Encrypt.e(password));
 			session.merge(admin);
@@ -126,13 +124,13 @@ public class EmployeeAccountDaoImpl implements IEmployeeAccountDao {
 		
 	};
 
-	public boolean employeeAccountCreateOne(EmployeeAccountEntry entry) {
+	public boolean employeeAccountCreateOne(EmployeeAccount employeeAccount) {
 
 		session = this.sessionFactory.getCurrentSession();
 
-		EmployeeAccountEntry result = getEmployeeAccount(entry.getUserName());
+		EmployeeAccount result = getEmployeeAccount(employeeAccount.getUserName());
 		if (UtilValidate.isEmpty(result)) {
-			session.save(entry);
+			session.save(employeeAccount);
 			return true;
 		} else {
 			return false;
@@ -144,7 +142,7 @@ public class EmployeeAccountDaoImpl implements IEmployeeAccountDao {
 
 		session = this.sessionFactory.getCurrentSession();
 
-		EmployeeAccountEntry admin = getEmployeeAccount(userName);
+		EmployeeAccount admin = getEmployeeAccount(userName);
 		if (UtilValidate.isNotEmpty(admin)) {
 			session.delete(admin);
 			return true;

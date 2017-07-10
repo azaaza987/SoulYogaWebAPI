@@ -1,5 +1,6 @@
 package com.web.soulyogaadmin.course.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -12,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.web.soulyogaadmin.course.dao.ICourseDao;
 import com.web.soulyogaadmin.entity.CourseEntry;
+import com.web.soulyogaadmin.entity.Coursecategory;
+import com.web.soulyogaadmin.entity.Yogaclub;
 import com.web.soulyogaadmin.util.UtilValidate;
 
 
@@ -86,7 +89,39 @@ public class CourseDaoImpl implements ICourseDao {
 			return list;
 		}
 		return null;
-	};
+	}
+
+
+	@Override
+	public List<Yogaclub> getAllYogaclubList() {
+		List<Yogaclub> list=new ArrayList<Yogaclub>();
+		session = this.sessionFactory.getCurrentSession();
+		String hql="from Yogaclub y where y.state=0 ";
+		Query query = session.createQuery(hql);
+		list=query.list();
+		return list;
+	}
+
+
+	@Override
+	public List<Coursecategory> getAllCoursecategoryList() {
+		List<Coursecategory> list=new ArrayList<Coursecategory>();
+		session=this.sessionFactory.getCurrentSession();
+		String hql="from Coursecategory c where c.state=0 ";
+		Query query=session.createQuery(hql);
+		list=query.list();
+		return list;
+	}
+
+
+	@Override
+	public void courseAdd(CourseEntry course) {
+		session =this.sessionFactory.getCurrentSession();
+		session.save(course);
+	}
+
+
+
 	
 	
 }

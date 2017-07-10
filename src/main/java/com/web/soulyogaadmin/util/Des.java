@@ -174,7 +174,7 @@ public class Des {
 		
 //		String temp = "Admin";			//1B64EE8E1AA39891
 		String temp = "123456";			//C78BC159945F6CAE
-		temp = "root";			//5F946AB62EC2736B
+		temp = "123456";			//5F946AB62EC2736B
 		String tempValue = Encrypt(temp, build3DesKey(strKey));// 加密
 		System.out.println("加密后的信息     " + tempValue);
 		
